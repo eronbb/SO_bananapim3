@@ -1,2 +1,0 @@
-# Pacotes apt extras, um por linha (ex.: python3-pygame, python3-numpy, python3-serial).
-# Prefira apt para bibliotecas pesadas: no ARM de 32 bits o pip pode precisar compilar.

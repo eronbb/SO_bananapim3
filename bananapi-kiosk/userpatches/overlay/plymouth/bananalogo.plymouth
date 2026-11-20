@@ -1,8 +1,0 @@
-[Plymouth Theme]
-Name=Banana Logo
-Description=Logo em tela cheia
-ModuleName=script
-
-[script]
-ImageDir=/usr/share/plymouth/themes/bananalogo
-ScriptFile=/usr/share/plymouth/themes/bananalogo/bananalogo.script

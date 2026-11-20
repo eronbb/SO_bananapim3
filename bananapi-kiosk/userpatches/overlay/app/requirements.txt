@@ -1,1 +1,0 @@
-# Bibliotecas pip, uma por linha (ex.: requests). Linhas com # sao ignoradas.
