@@ -1,0 +1,24 @@
+[Unit]
+Description=Aplicativo Python Tkinter (/opt/app/main.py)
+After=local-fs.target systemd-user-sessions.service plymouth-start.service
+Conflicts=getty@tty1.service
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/app
+Environment=HOME=/root
+# Plymouth solta a tela para o X, mantendo a logo visivel
+ExecStartPre=-/usr/bin/plymouth deactivate
+ExecStart=/usr/bin/xinit /opt/app/venv/bin/python -u /opt/app/main.py -- :0 vt1 -nocursor -nolisten tcp -s 0 -dpms
+# Da tempo da janela do app aparecer e entao encerra a logo
+ExecStartPost=/bin/sh -c 'sleep 4; /usr/bin/plymouth quit --retain-splash || true'
+Restart=always
+RestartSec=2
+StandardInput=tty
+StandardOutput=journal
+TTYPath=/dev/tty1
+TTYReset=yes
+TTYVHangup=yes
+
+[Install]
+WantedBy=multi-user.target
