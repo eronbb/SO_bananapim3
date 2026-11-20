@@ -1,0 +1,19 @@
+name: Gerar imagem Banana Pi M3
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - name: Liberar espaco em disco
+        run: |
+          sudo rm -rf /usr/share/dotnet /opt/ghc /usr/local/lib/android /opt/hostedtoolcache /usr/local/share/boost
+          df -h /
+      - name: Compilar imagem
+        run: ./build.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bananapi-m3-imagem
+          path: armbian-build/output/images/*
+          retention-days: 7
