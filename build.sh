@@ -7,6 +7,6 @@ rm -rf armbian-build/userpatches && cp -r userpatches armbian-build/userpatches
 cd armbian-build
 ./compile.sh build \
   BOARD=bananapim3 BRANCH=current RELEASE=noble \
-  BUILD_MINIMAL=yes BUILD_DESKTOP=no KERNEL_CONFIGURE=no \
+  BUILD_MINIMAL=yes BUILD_DESKTOP=no KERNEL_CONFIGURE=no PREFER_DOCKER=no\
   COMPRESS_OUTPUTIMAGE=sha,xz
 echo "Imagem em: armbian-build/output/images/"
