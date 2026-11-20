@@ -5,14 +5,14 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 360
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Liberar espaco em disco
         run: |
           sudo rm -rf /usr/share/dotnet /opt/ghc /usr/local/lib/android /opt/hostedtoolcache /usr/local/share/boost
           df -h /
       - name: Compilar imagem
-        run: ./build.sh
-      - uses: actions/upload-artifact@v4
+        run: bash build.sh
+      - uses: actions/upload-artifact@v5
         with:
           name: bananapi-m3-imagem
           path: armbian-build/output/images/*
